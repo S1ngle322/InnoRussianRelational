@@ -2,6 +2,9 @@ const Sequelize = require('sequelize');
 const db = require('../config/database');
 
 const Phrase = db.define('phrase', {
+    phrase: {
+        type: Sequelize.STRING
+    },
     translation: {
         type: Sequelize.STRING
     },

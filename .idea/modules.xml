@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
+
       <module fileurl="file://$PROJECT_DIR$/relational_ir2.iml" filepath="$PROJECT_DIR$/relational_ir2.iml" />
 =======
       <module fileurl="file://$PROJECT_DIR$/innorussianrelational.iml" filepath="$PROJECT_DIR$/innorussianrelational.iml" />
->>>>>>> 47014fab88605a779bd44ef0fc891826e3b195c3
     </modules>
   </component>
 </project>

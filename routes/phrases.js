@@ -11,4 +11,20 @@ router.get('/', (req, res) =>
         })
         .catch(err => console.log("Error " + err)));
 
+
+router.post('/', (req, res) =>{
+    let {phrase, translation, transcription, context, media, topic_name} = req.body;
+
+    Phrase.create({
+        phrase,
+        translation,
+        transcription,
+        context,
+        media,
+        topic_name
+    })
+        .then(phrase => res.send(phrase))
+        .catch(err => console.log(err));
+});
+
 module.exports = router;
