@@ -7,13 +7,13 @@ this part of assignment was modified after the deadline...
 The first part is about сreation of database and execution of CRUD operations relevant for user stories via terminal. 
 
 The second part is dedicated to this nodejs project that works with postgresql via sequelize.
-Code in project can add and show topics and phrases via POST (with JSON body) and GET queries in Postman.
+Code in project can add and show topics and phrases via ```POST``` (with ```JSON``` body) and ```GET``` queries in Postman.
 
 
 If anything goes wrong, [contact me](https://t.me/feuer_fox), if you wish.
 
 
-## PART ONE.
+## PART ONE
 
 Here is one of possible ways to reproduce our work:
 
@@ -125,3 +125,57 @@ To populate tables with data, run code from ['initial data'](https://github.com/
 *To demonstrate delete operation in SQL,*
 * delete account with
 ```DELETE FROM users WHERE username='harry123';```
+
+
+
+
+## PART TWO
+
+
+We started our work by a new nodejs project, and I am not sure it was assumed by assignment, but anyway, here how results could be reproduced:
+
+Download this repository and open it in IntelliJ IDEA, for example.
+
+Run ```npm install``` to install dependencies specified in ```package.json```. In ```config/database.js``` write your password in postgesql instead of mine, which is "secrets".
+Run ```npm run start```.
+
+Open [Postman](https://www.postman.com/downloads/). Insert request url - ```http://localhost:3000/phrase``` or ```http://localhost:3000/topic```.
+
+
+```GET``` queries on this routes return all phrases and all topics, respectively.
+
+
+For ```POST``` queries on topics follow such format:
+```
+{
+    "name": "shopping",
+    "description": "what you might need in supermarkets"
+}
+```
+
+
+For ```POST``` queries on phrases follow such format:
+```
+{
+    "phrase" : "Да, мне нужен пакет",
+    "translation" : "Yes, I need a plastic bag",
+    "transcription": "Da, mne nuzjen paket",
+    "context": "Reply to cahier if you need it",
+    "media": false,
+    "topic_id": "7"
+}
+```
+
+TIP: by default, format of data in ```Body``` is ```Text```, and it is not what is needed in this case, so change to ```JSON```.
+
+Note that ```topic_id``` in ```phrases``` is foreign key that points to primary key ```id``` in ```topics```
+
+
+Here is how all combinations of queries look:
+![alt text](https://github.com/S1ngle322/InnoRussianRelational/blob/master/pics/get%20phrases.png)
+
+![alt text](https://github.com/S1ngle322/InnoRussianRelational/blob/master/pics/get%20topics.png)
+
+![alt text](https://github.com/S1ngle322/InnoRussianRelational/blob/master/pics/post%20topic.png)
+
+![alt text](https://github.com/S1ngle322/InnoRussianRelational/blob/master/pics/post%20phrase.png)
