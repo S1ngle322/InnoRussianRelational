@@ -13,7 +13,7 @@ router.get('/', (req, res) =>
 
 
 router.post('/', (req, res) =>{
-    let {phrase, translation, transcription, context, media, topic_name} = req.body;
+    let {phrase, translation, transcription, context, media, topic_id} = req.body;
 
     Phrase.create({
         phrase,
@@ -21,7 +21,7 @@ router.post('/', (req, res) =>{
         transcription,
         context,
         media,
-        topic_name
+        topic_id
     })
         .then(phrase => res.send(phrase))
         .catch(err => console.log(err));

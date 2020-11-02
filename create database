@@ -5,24 +5,20 @@ CREATE TABLE users (
   password VARCHAR(255) NOT NULL,
   status VARCHAR(255) NOT NULL DEFAULT 'inactive',
   number_of_learned_words integer NOT NULL DEFAULT 0,
-  createdAt date,
-  updatedAt date,
+  "createdAt" date,
+  "updatedAt" date,
   CONSTRAINT User_pk PRIMARY KEY (id)
 );
-
-
 
 CREATE TABLE session (
   id serial NOT NULL,
   user_id integer NOT NULL,
   hours integer NOT NULL,
   date DATE NOT NULL,
-  createdAt date,
-  updatedAt date,
+  "createdAt" date,
+  "updatedAt" date,
   CONSTRAINT Session_pk PRIMARY KEY (id)
 );
-
-
 
 CREATE TABLE phrases (
   id serial NOT NULL,
@@ -32,42 +28,36 @@ CREATE TABLE phrases (
   context TEXT NOT NULL,
   media bytea NOT NULL,
   topic_id integer NOT NULL,
-  createdAt date,
-  updatedAt date,
+  "createdAt" date,
+  "updatedAt" date,
   CONSTRAINT Phrase_pk PRIMARY KEY (id)
 );
-
-
 
 CREATE TABLE topics (
   id serial NOT NULL,
   name VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
-  createdAt date,
-  updatedAt date,
+  "createdAt" date,
+  "updatedAt" date,
   CONSTRAINT Topic_pk PRIMARY KEY (id)
 );
-
-
 
 CREATE TABLE FRIEND_WITH (
   id serial NOT NULL,
   user_id integer NOT NULL,
   otheruser_id integer NOT NULL,
-  createdAt date,
-  updatedAt date,
+  "createdAt" date,
+  "updatedAt" date,
   CONSTRAINT FRIEND_WITH_pk PRIMARY KEY (id)
 );
-
-
 
 CREATE TABLE HAS_IN_PHRASEBOOK (
   id serial NOT NULL,
   user_id integer NOT NULL,
   phrase_id integer NOT NULL,
   state VARCHAR(255) NOT NULL,
-  createdAt date,
-  updatedAt date,
+  "createdAt" date,
+  "updatedAt" date,
   CONSTRAINT HAS_IN_PHRASEBOOK_pk PRIMARY KEY (id)
 );
 
@@ -75,8 +65,8 @@ CREATE TABLE IS_SIMILAR_TO (
   id serial NOT NULL,
   phrase_id integer NOT NULL,
   otherphrase_id integer NOT NULL,
-  createdAt date,
-  updatedAt date,
+  "createdAt" date,
+  "updatedAt" date,
   CONSTRAINT IS_SIMILAR_TO_pk PRIMARY KEY (id)
 );
 
@@ -88,6 +78,4 @@ ALTER TABLE HAS_IN_PHRASEBOOK ADD CONSTRAINT HAS_IN_PHRASEBOOK_fk0 FOREIGN KEY (
 ALTER TABLE HAS_IN_PHRASEBOOK ADD CONSTRAINT HAS_IN_PHRASEBOOK_fk1 FOREIGN KEY (phrase_id) REFERENCES phrases(id);
 ALTER TABLE IS_SIMILAR_TO ADD CONSTRAINT IS_SIMILAR_TO_fk0 FOREIGN KEY (phrase_id) REFERENCES phrases(id);
 ALTER TABLE IS_SIMILAR_TO ADD CONSTRAINT IS_SIMILAR_TO_fk1 FOREIGN KEY (otherphrase_id) REFERENCES phrases(id);
-
-
 

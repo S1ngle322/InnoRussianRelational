@@ -17,8 +17,8 @@ const Phrase = db.define('phrase', {
     media: {
         type: Sequelize.BOOLEAN
     },
-    topic_name: {
-        type: Sequelize.STRING
+    topic_id: {
+        type: Sequelize.INTEGER
     }
 })
 
