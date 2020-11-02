@@ -1,0 +1,93 @@
+CREATE TABLE users (
+  id serial NOT NULL,
+  username VARCHAR(255) NOT NULL UNIQUE,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  status VARCHAR(255) NOT NULL DEFAULT 'inactive',
+  number_of_learned_words integer NOT NULL DEFAULT 0,
+  createdAt date,
+  updatedAt date,
+  CONSTRAINT User_pk PRIMARY KEY (id)
+);
+
+
+
+CREATE TABLE session (
+  id serial NOT NULL,
+  user_id integer NOT NULL,
+  hours integer NOT NULL,
+  date DATE NOT NULL,
+  createdAt date,
+  updatedAt date,
+  CONSTRAINT Session_pk PRIMARY KEY (id)
+);
+
+
+
+CREATE TABLE phrases (
+  id serial NOT NULL,
+  phrase VARCHAR(255) NOT NULL,
+  translation TEXT NOT NULL,
+  transcription TEXT NOT NULL,
+  context TEXT NOT NULL,
+  media bytea NOT NULL,
+  topic_id integer NOT NULL,
+  createdAt date,
+  updatedAt date,
+  CONSTRAINT Phrase_pk PRIMARY KEY (id)
+);
+
+
+
+CREATE TABLE topics (
+  id serial NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  createdAt date,
+  updatedAt date,
+  CONSTRAINT Topic_pk PRIMARY KEY (id)
+);
+
+
+
+CREATE TABLE FRIEND_WITH (
+  id serial NOT NULL,
+  user_id integer NOT NULL,
+  otheruser_id integer NOT NULL,
+  createdAt date,
+  updatedAt date,
+  CONSTRAINT FRIEND_WITH_pk PRIMARY KEY (id)
+);
+
+
+
+CREATE TABLE HAS_IN_PHRASEBOOK (
+  id serial NOT NULL,
+  user_id integer NOT NULL,
+  phrase_id integer NOT NULL,
+  state VARCHAR(255) NOT NULL,
+  createdAt date,
+  updatedAt date,
+  CONSTRAINT HAS_IN_PHRASEBOOK_pk PRIMARY KEY (id)
+);
+
+CREATE TABLE IS_SIMILAR_TO (
+  id serial NOT NULL,
+  phrase_id integer NOT NULL,
+  otherphrase_id integer NOT NULL,
+  createdAt date,
+  updatedAt date,
+  CONSTRAINT IS_SIMILAR_TO_pk PRIMARY KEY (id)
+);
+
+ALTER TABLE Session ADD CONSTRAINT Session_fk0 FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE phrases ADD CONSTRAINT Phrase_fk0 FOREIGN KEY (topic_id) REFERENCES topics(id);
+ALTER TABLE FRIEND_WITH ADD CONSTRAINT FRIEND_WITH_fk0 FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE FRIEND_WITH ADD CONSTRAINT FRIEND_WITH_fk1 FOREIGN KEY (otheruser_id) REFERENCES users(id);
+ALTER TABLE HAS_IN_PHRASEBOOK ADD CONSTRAINT HAS_IN_PHRASEBOOK_fk0 FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE HAS_IN_PHRASEBOOK ADD CONSTRAINT HAS_IN_PHRASEBOOK_fk1 FOREIGN KEY (phrase_id) REFERENCES phrases(id);
+ALTER TABLE IS_SIMILAR_TO ADD CONSTRAINT IS_SIMILAR_TO_fk0 FOREIGN KEY (phrase_id) REFERENCES phrases(id);
+ALTER TABLE IS_SIMILAR_TO ADD CONSTRAINT IS_SIMILAR_TO_fk1 FOREIGN KEY (otherphrase_id) REFERENCES phrases(id);
+
+
+
