@@ -132,7 +132,7 @@ To populate tables with data, run code from ['initial data'](https://github.com/
 ## PART TWO
 
 
-We started our work by a new nodejs project, and I am not sure it was assumed by assignment, but anyway, here how results could be reproduced:
+We started our work by a new nodejs project, and I am not sure it was assumed by assignment, but anyway, here is how results can be reproduced:
 
 Download this repository and open it in IntelliJ IDEA, for example.
 
