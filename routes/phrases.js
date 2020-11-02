@@ -6,8 +6,7 @@ const Phrase = require('../models/Phrase');
 router.get('/', (req, res) =>
     Phrase.findAll()
         .then(phrase => {
-            console.log(phrase);
-            res.sendStatus(200);
+            res.send(phrase);
         })
         .catch(err => console.log("Error " + err)));
 

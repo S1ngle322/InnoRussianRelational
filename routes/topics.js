@@ -6,8 +6,7 @@ const Topic = require('../models/Topic');
 router.get('/', (req, res) =>
     Topic.findAll()
         .then(topic => {
-            console.log(topic);
-            res.sendStatus(200);
+            res.send(topic);
         })
         .catch(err => console.log("Error " + err)));
 
