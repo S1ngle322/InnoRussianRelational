@@ -1,0 +1,56 @@
+INSERT INTO users (username, email, password, status) VALUES
+('john11', 'jdoe@gmail.com', 'mypass', 'user'),
+('Mary', 'pueess1@gmail.com', 'mfwefss', 'admin'),
+('Tanya', 'lary14324@gmail.com', 'myw4t3grsass', 'user'),
+('Ivan', 'mynewemail@gmail.com', 'mywfess', 'admin'),
+('Kolya', 'navi@gmail.com', 'pagwe546ss', 'user');
+
+
+
+INSERT INTO session (user_id, hours, date) VALUES
+(1, 1, '11.10.2020'),
+(1, 1, '11.12.2020'),
+(3, 1, '11.13.2020'),
+(4, 1, '11.16.2020'),
+(5, 1, '11.12.2020');
+
+INSERT INTO topics (name, description) VALUES
+('greetings', 'Greetings in the different situations'),
+('apologies', 'Apologies in the different situations'),
+('saying goodbye', 'Saying Goodbye in the different situations'),
+('saying thanks', 'Saying Thanks in the different situations'),
+('comprehension', 'How to say about level of Russian language proficiency');
+
+
+
+INSERT INTO phrases (phrase, translation, transcription, context, media, topic_id) VALUES
+('Как дела?', 'How are you?', 'Kak dela?', 'The question about the mood to your friend',E'\\000', 1),
+('Пока', 'Bye', 'Poka', 'Saying Goodbye to your friend',E'\\000', 3),
+('Простите', 'Excuse me', 'Prasteete', 'Apologie',E'\\000', 2),
+('Большое спасибо', 'Thank you very much', 'Balshoye spaseeba', 'Expressful way to say Thank you',E'\\000', 4),
+('Рад тебя видеть', 'Nice to see you!', 'Rad teebya veedet', 'The phrase Nice to see you to a friend',E'\\000', 1);
+
+
+INSERT INTO friend_with (user_id, otheruser_id) VALUES
+(1, 3),
+(4, 3),
+(1, 4),
+(5, 1),
+(5, 3);
+
+
+INSERT INTO is_similar_to (phrase_id, otherphrase_id) VALUES
+(5, 1),
+(5, 3),
+(1, 3),
+(4, 3),
+(1, 4);
+
+
+INSERT INTO has_in_phrasebook (user_id, phrase_id, state) VALUES
+(5, 3, 'inactive'),
+(1, 3, 'inactive'),
+(4, 3, 'inactive'),
+(5, 1, 'inactive'),
+(1, 4, 'inactive');
+
